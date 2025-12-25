@@ -6,6 +6,7 @@ namespace Marktic\Faq\Utility;
 
 use ByTIC\PackageBase\Utility\ModelFinder;
 use Marktic\Faq\FaqServiceProvider;
+use Marktic\Faq\Categories\Models\Categories;
 use Marktic\Faq\Entries\Models\Entries;
 use Marktic\Faq\Sites\Models\Sites;
 use Nip\Records\RecordManager;
@@ -17,6 +18,7 @@ class FaqModels extends ModelFinder
 {
     public const ENTRIES = 'entries';
     public const SITES = 'sites';
+    public const CATEGORIES = 'categories';
 
     public static function entries(): Entries|RecordManager
     {
@@ -36,6 +38,16 @@ class FaqModels extends ModelFinder
     public static function sitesClass(): string
     {
         return static::getModelsClass(self::SITES, Sites::class);
+    }
+
+    public static function categories(): Categories|RecordManager
+    {
+        return static::getModels(self::CATEGORIES, Categories::class);
+    }
+
+    public static function categoriesClass(): string
+    {
+        return static::getModelsClass(self::CATEGORIES, Categories::class);
     }
 
     protected static function packageName(): string

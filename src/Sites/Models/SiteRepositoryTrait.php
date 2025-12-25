@@ -22,6 +22,7 @@ trait SiteRepositoryTrait
     protected function initRelationsCms(): void
     {
         $this->initRelationsCmsTenant();
+        $this->hasMany('Categories', ['class' => FaqModels::categoriesClass(), 'fk' => 'site_id']);
     }
 
     protected function generateFilterManagerDefaultClass(): string

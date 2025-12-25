@@ -7,7 +7,7 @@ use Marktic\Faq\Sites\Models\Sites;
 use Marktic\Faq\Utility\FaqModels;
 use Nip\Records\RecordManager;
 
-trait HasCmsModels
+trait HasFaqModels
 {
     /**
      */
