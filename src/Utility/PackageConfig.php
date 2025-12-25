@@ -18,7 +18,7 @@ class PackageConfig extends \ByTIC\PackageBase\Utility\PackageConfig
 
     public static function configPath(): string
     {
-        return __DIR__ . '/../../config/mkt_basket.php';
+        return __DIR__ . '/../../config/mkt_faq.php';
     }
 
     public static function tableName($name, $default = null)
