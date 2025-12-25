@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Marktic\Faq;
 
 use ByTIC\PackageBase\BaseBootableServiceProvider;
-use Marktic\Faq\Utility\BasketModels;
 use Marktic\Faq\Utility\PackageConfig;
+use Marktic\Faq\Utility\PathsHelpers;
 
 /**
  * Class FaqServiceProvider.
@@ -26,7 +26,7 @@ class FaqServiceProvider extends BaseBootableServiceProvider
 
     protected function translationsPath(): string
     {
-        return __DIR__ . '/resources/lang/';
+        return PathsHelpers::lang('/');
     }
 
     protected function registerCommands()

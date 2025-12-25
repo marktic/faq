@@ -25,6 +25,6 @@ class DetailsForm extends FormModel
 
     protected function initializeName()
     {
-        $this->addElementText('name', translator()->trans('name'), true);
+        $this->addInput('name', translator()->trans('name'), true);
     }
 }

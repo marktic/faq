@@ -4,10 +4,22 @@ namespace Marktic\Faq\Bundle\Modules\Admin\Controllers;
 
 use Marktic\Faq\Bundle\Modules\Admin\Controllers\Behaviours\HasTenantControllerTrait;
 use Marktic\Faq\Bundle\Modules\Admin\Forms\Sites\DetailsForm;
+use Marktic\Faq\Entries\Models\Entry;
+use Marktic\Faq\Sites\Models\Site;
 
 trait SitesControllerTrait
 {
     use HasTenantControllerTrait;
+
+    public function addNewModel()
+    {
+        /** @var Site $record */
+        $record = parent::addNewModel();
+
+        $page = $this->getFaqTenantFromRequest();
+        $record->populateFromTenant($page);
+        return $record;
+    }
 
     protected function getModelFormClass($model, $action = null): string
     {

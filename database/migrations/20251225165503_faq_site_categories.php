@@ -20,15 +20,15 @@ final class FaqSiteCategories extends AbstractMigration
     public function change(): void
     {
         $table = $this->table('mkt_faq_site_categories');
-        $table->addColumn('site_id', 'bigint')
+        $table->addColumn('site_id', 'integer',[ 'null' => false, 'signed' => false])
             ->addColumn('title', 'string', ['limit' => 255])
             ->addColumn('slug', 'string', ['limit' => 255])
-            ->addColumn('position', 'smallint', ['default' => 0])
+            ->addColumn('position', 'smallinteger', ['default' => 0])
             ->addColumn('created_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP'])
             ->addColumn('updated_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'update' => 'CURRENT_TIMESTAMP'])
             ->addIndex(['site_id'])
             ->addIndex(['position'])
-            ->addForeignKey('site_id', 'mkt_faq-sites', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION'])
+            ->addForeignKey('site_id', 'mkt_faq_sites', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION'])
             ->create();
     }
 }

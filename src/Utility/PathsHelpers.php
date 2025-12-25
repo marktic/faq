@@ -13,9 +13,19 @@ class PathsHelpers
         return dirname(__DIR__, 2);
     }
 
-    public static function config($path): string
+    public static function config($path = null): string
     {
         return static::basePath() . '/config' . $path;
+    }
+
+    public static function resources($path = null): string
+    {
+        return static::basePath() . '/resources' . $path;
+    }
+
+    public static function lang($path = null): string
+    {
+        return static::resources() . '/lang' . $path;
     }
 
     public static function modules($path): string

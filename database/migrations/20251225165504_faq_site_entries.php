@@ -20,18 +20,18 @@ final class FaqSiteEntries extends AbstractMigration
     public function change(): void
     {
         $table = $this->table('mkt_faq_site_entries');
-        $table->addColumn('site_id', 'bigint')
-            ->addColumn('category_id', 'bigint')
-            ->addColumn('entry_id', 'bigint')
-            ->addColumn('position', 'smallint', ['default' => 0])
+        $table->addColumn('site_id', 'integer', ['null' => false, 'signed' => false])
+            ->addColumn('category_id', 'integer', ['null' => false, 'signed' => false])
+            ->addColumn('entry_id', 'integer', ['null' => false, 'signed' => false])
+            ->addColumn('position', 'smallinteger', ['default' => 0])
             ->addIndex(['site_id', 'entry_id'], ['unique' => true])
             ->addIndex(['site_id'])
             ->addIndex(['category_id'])
             ->addIndex(['entry_id'])
             ->addIndex(['position'])
-            ->addForeignKey('site_id', 'mkt_faq-sites', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION'])
-            ->addForeignKey('category_id', 'mkt_faq-site_categories', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION'])
-            ->addForeignKey('entry_id', 'mkt_faq-entries', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION'])
+            ->addForeignKey('site_id', 'mkt_faq_sites', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION'])
+            ->addForeignKey('category_id', 'mkt_faq_site_categories', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION'])
+            ->addForeignKey('entry_id', 'mkt_faq_entries', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION'])
             ->create();
     }
 }

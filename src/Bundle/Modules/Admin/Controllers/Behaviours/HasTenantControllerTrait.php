@@ -16,7 +16,7 @@ trait HasTenantControllerTrait
         /** @var Session $filter */
         $filter = parent::getRequestFilters($session);
         $data = $filter->getData();
-        $data['tenant'] = $this->getCmsTenantFromRequest();
+        $data['tenant'] = $this->getFaqTenantFromRequest();
         $filter->initWithData($data);
         return $filter;
     }
@@ -24,7 +24,7 @@ trait HasTenantControllerTrait
     /**
      * @return mixed
      */
-    protected function getCmsTenantFromRequest()
+    protected function getFaqTenantFromRequest()
     {
         $tenantName = $this->getRequest()->get('tenant');
         return $this->checkForeignModelFromRequest($tenantName, ['tenant_id', 'id']);

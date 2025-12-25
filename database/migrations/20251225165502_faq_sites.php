@@ -20,7 +20,7 @@ final class FaqSites extends AbstractMigration
     public function change(): void
     {
         $table = $this->table('mkt_faq_sites');
-        $table->addColumn('tenant_id', 'bigint', ['null' => true])
+        $table->addColumn('tenant_id', 'biginteger', ['null' => true])
             ->addColumn('tenant', 'string', ['limit' => 255, 'null' => true])
             ->addColumn('name', 'string', ['limit' => 255])
             ->addColumn('metadata', 'json', ['null' => true])
