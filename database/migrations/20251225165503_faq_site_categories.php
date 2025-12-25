@@ -19,7 +19,7 @@ final class FaqSiteCategories extends AbstractMigration
      */
     public function change(): void
     {
-        $table = $this->table('mkt_faq-site_categories');
+        $table = $this->table('mkt_faq_site_categories');
         $table->addColumn('site_id', 'bigint')
             ->addColumn('title', 'string', ['limit' => 255])
             ->addColumn('slug', 'string', ['limit' => 255])
