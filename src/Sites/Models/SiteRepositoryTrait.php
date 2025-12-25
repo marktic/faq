@@ -12,8 +12,8 @@ use Marktic\Faq\Utility\PackageConfig;
 
 trait SiteRepositoryTrait
 {
-    public const TABLE = 'mkt_cms_sites';
-    public const CONTROLLER = 'mkt_cms-sites';
+    public const TABLE = 'mkt_faq_sites';
+    public const CONTROLLER = 'mkt_faq-sites';
 
     use BaseRepositoryTrait, HasTenantRepository {
         HasTenantRepository::initRelations insteadof BaseRepositoryTrait;

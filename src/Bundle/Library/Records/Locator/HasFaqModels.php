@@ -11,7 +11,7 @@ trait HasFaqModels
 {
     /**
      */
-    public static function cmsSites(): Sites|RecordManager
+    public static function faqSites(): Sites|RecordManager
     {
         return FaqModels::sites();
     }
@@ -19,7 +19,7 @@ trait HasFaqModels
     /**
      * @return Entries|RecordManager
      */
-    public static function entries(): Entries|RecordManager
+    public static function faqEntries(): Entries|RecordManager
     {
         return FaqModels::entries();
     }
