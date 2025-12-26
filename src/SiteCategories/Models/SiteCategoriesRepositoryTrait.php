@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Marktic\Faq\SiteCategories\Models;
 
 use Marktic\Faq\Base\Models\Traits\BaseRepositoryTrait;
+use Marktic\Faq\SiteCategories\Actions\Transform\GenerateSiteCategorySlug;
 use Marktic\Faq\SiteCategories\Models\Filters\FilterManager;
 use Marktic\Faq\Sites\ModelsRelated\HasFaqSite\HasFaqSiteRepositoryTrait;
 use Marktic\Faq\Utility\FaqModels;
@@ -21,6 +22,14 @@ trait SiteCategoriesRepositoryTrait
     use BaseRepositoryTrait, HasFaqSiteRepositoryTrait {
         HasFaqSiteRepositoryTrait::initRelations insteadof BaseRepositoryTrait;
         HasFaqSiteRepositoryTrait::initRelationsFaq insteadof BaseRepositoryTrait;
+    }
+
+    public function bootSiteCategoriesRepositoryTrait()
+    {
+        static::creating(function ($event) {
+            $model = $event->getRecord();
+            GenerateSiteCategorySlug::for($model)->checkOrSet();
+        });
     }
 
     protected function injectParams(&$params = [])

@@ -14,7 +14,6 @@ use Nip\Records\Record;
  * Trait SiteCategoryTrait
  * @property int $site_id
  * @property string $title
- * @property string $slug
  * @property int $position
  *
  * @method Record getSite()
@@ -24,6 +23,8 @@ trait SiteCategoryTrait
     use TimestampableTrait;
     use HasFormsRecordTrait;
     use HasFaqSiteRecordTrait;
+
+    protected ?string $slug = null;
 
     public function getTitle(): string
     {
@@ -41,7 +42,7 @@ trait SiteCategoryTrait
         return (string) $this->slug;
     }
 
-    public function setSlug(string $slug): self
+    public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
         return $this;
