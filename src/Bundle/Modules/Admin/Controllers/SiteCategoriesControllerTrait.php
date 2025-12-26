@@ -3,8 +3,7 @@
 namespace Marktic\Faq\Bundle\Modules\Admin\Controllers;
 
 use Marktic\Faq\Bundle\Modules\Admin\Controllers\Behaviours\HasFaqSiteControllerTrait;
-use Marktic\Faq\Bundle\Modules\Admin\Forms\Entries\DetailsForm;
-use Marktic\Faq\Entries\Models\Entry;
+use Marktic\Faq\Bundle\Modules\Admin\Forms\SiteCategories\DetailsForm;
 use Marktic\Faq\SiteCategories\Models\SiteCategory;
 
 trait SiteCategoriesControllerTrait
