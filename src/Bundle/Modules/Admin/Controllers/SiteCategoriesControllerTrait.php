@@ -2,11 +2,9 @@
 
 namespace Marktic\Faq\Bundle\Modules\Admin\Controllers;
 
-use Marktic\Cms\PageSections\Models\PageSection;
 use Marktic\Faq\Bundle\Modules\Admin\Controllers\Behaviours\HasFaqSiteControllerTrait;
 use Marktic\Faq\Bundle\Modules\Admin\Forms\SiteCategories\DetailsForm;
 use Marktic\Faq\SiteCategories\Models\SiteCategory;
-use Marktic\Faq\Sites\Models\Site;
 
 trait SiteCategoriesControllerTrait
 {
@@ -21,6 +19,30 @@ trait SiteCategoriesControllerTrait
         $record->populateFromSite($page);
         return $record;
     }
+
+    public function order(): void
+    {
+        $site = $this->getFaqSiteFromRequest();
+        $idSections = (array)$this->getRequest()->get('order');
+
+        $categories = $site->getFaqSiteCategories();
+        $categories = $categories->keyBy('id');
+
+        if (count($categories) < 1) {
+            $this->Async()->sendMessage('No site categories', 'error');
+        }
+
+        foreach ($idSections as $pos => $idSection) {
+            $record = $categories[$idSection] ?? null;
+            if ($record) {
+                $record->position = $pos + 1;
+                $record->update();
+            }
+        }
+
+        $this->Async()->sendMessage('Blocks reordered');
+    }
+
 
     /**
      * @param $type

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Marktic\Faq\SiteCategories\Models;
 
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordTrait;
+use Marktic\Faq\Base\Models\HasPosition\HasPositionRecordTrait;
 use Marktic\Faq\Base\Models\Timestampable\TimestampableTrait;
 use Marktic\Faq\Sites\Models\Site;
 use Marktic\Faq\Sites\ModelsRelated\HasFaqSite\HasFaqSiteRecordTrait;
@@ -14,7 +15,6 @@ use Nip\Records\Record;
  * Trait SiteCategoryTrait
  * @property int $site_id
  * @property string $title
- * @property int $position
  *
  * @method Record getSite()
  */
@@ -23,6 +23,7 @@ trait SiteCategoryTrait
     use TimestampableTrait;
     use HasFormsRecordTrait;
     use HasFaqSiteRecordTrait;
+    use HasPositionRecordTrait;
 
     protected ?string $slug = null;
 
@@ -45,17 +46,6 @@ trait SiteCategoryTrait
     public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
-        return $this;
-    }
-
-    public function getPosition(): int
-    {
-        return (int) $this->position;
-    }
-
-    public function setPosition(int $position): self
-    {
-        $this->position = $position;
         return $this;
     }
 
