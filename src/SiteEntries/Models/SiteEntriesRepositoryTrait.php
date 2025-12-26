@@ -2,24 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Marktic\Faq\SiteCategories\Models;
+namespace Marktic\Faq\SiteEntries\Models;
 
 use Marktic\Faq\Base\Models\Traits\BaseRepositoryTrait;
-use Marktic\Faq\SiteCategories\Actions\Transform\GenerateSiteCategorySlug;
-use Marktic\Faq\SiteCategories\Models\Filters\FilterManager;
+use Marktic\Faq\SiteEntries\Models\Filters\FilterManager;
 use Marktic\Faq\Sites\ModelsRelated\HasFaqSite\HasFaqSiteRepositoryTrait;
 use Marktic\Faq\Utility\FaqModels;
 use Marktic\Faq\Utility\PackageConfig;
 
 /**
- * Trait CategoryRepositoryTrait
+ * Trait SiteEntriesRepositoryTrait
  */
-trait SiteCategoriesRepositoryTrait
+trait SiteEntriesRepositoryTrait
 {
-    public const TABLE = 'mkt_faq_site_categories';
-    public const CONTROLLER = 'mkt_faq-site_categories';
-
-    public const RELATION_SITE_ENTRIES = 'FaqSiteEntries';
+    public const TABLE = 'mkt_faq_site_entries';
+    public const CONTROLLER = 'mkt_faq-site_entries';
 
     use BaseRepositoryTrait, HasFaqSiteRepositoryTrait {
         HasFaqSiteRepositoryTrait::initRelations insteadof BaseRepositoryTrait;
@@ -29,23 +26,8 @@ trait SiteCategoriesRepositoryTrait
     protected function initRelationsFaq(): void
     {
         $this->initRelationsFaqSite();
-        $this->initRelationsFaqSiteEntries();
-    }
-
-    protected function initRelationsFaqSiteEntries(): void
-    {
-        $this->hasMany(
-            self::RELATION_SITE_ENTRIES,
-            ['class' => FaqModels::siteEntriesClass(), 'fk' => 'category_id']
-        );
-    }
-
-    public function bootSiteCategoriesRepositoryTrait()
-    {
-        static::creating(function ($event) {
-            $model = $event->getRecord();
-            GenerateSiteCategorySlug::for($model)->checkOrSet();
-        });
+        $this->belongsTo('Category', ['class' => FaqModels::siteCategoriesClass(), 'fk' => 'category_id']);
+        $this->belongsTo('Entry', ['class' => FaqModels::entriesClass(), 'fk' => 'entry_id']);
     }
 
     protected function injectParams(&$params = [])
@@ -66,6 +48,6 @@ trait SiteCategoriesRepositoryTrait
 
     protected function generateTable()
     {
-        return PackageConfig::tableName(FaqModels::SITE_CATEGORIES);
+        return PackageConfig::tableName(FaqModels::SITE_ENTRIES);
     }
 }

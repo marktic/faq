@@ -15,6 +15,8 @@ trait EntryRepositoryTrait
     public const TABLE = 'mkt_faq_entries';
     public const CONTROLLER = 'mkt_faq-entries';
 
+    public const RELATION_SITE_ENTRIES = 'FaqSiteEntries';
+
     use BaseRepositoryTrait, HasTenantRepository {
         HasTenantRepository::initRelations insteadof BaseRepositoryTrait;
     }
@@ -22,6 +24,15 @@ trait EntryRepositoryTrait
     protected function initRelationsFaq(): void
     {
         $this->initRelationsFaqTenant();
+        $this->initRelationsFaqSiteEntries();
+    }
+
+    protected function initRelationsFaqSiteEntries(): void
+    {
+        $this->hasMany(
+            self::RELATION_SITE_ENTRIES,
+            ['class' => FaqModels::siteEntriesClass(), 'fk' => 'entry_id']
+        );
     }
 
     protected function generateFilterManagerDefaultClass(): string

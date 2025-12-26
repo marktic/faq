@@ -16,6 +16,7 @@ trait SiteRepositoryTrait
     public const CONTROLLER = 'mkt_faq-sites';
 
     public const RELATION_SITE_CATEGORIES = 'FaqSiteCategories';
+    public const RELATION_SITE_ENTRIES = 'FaqSiteEntries';
 
     use BaseRepositoryTrait, HasTenantRepository {
         HasTenantRepository::initRelations insteadof BaseRepositoryTrait;
@@ -25,6 +26,7 @@ trait SiteRepositoryTrait
     {
         $this->initRelationsFaqTenant();
         $this->initRelationsFaqSiteCategories();
+        $this->initRelationsFaqSiteEntries();
     }
 
     protected function initRelationsFaqSiteCategories(): void
@@ -32,6 +34,14 @@ trait SiteRepositoryTrait
         $this->hasMany(
             self::RELATION_SITE_CATEGORIES,
             ['class' => FaqModels::siteCategoriesClass(), 'fk' => 'site_id']
+        );
+    }
+
+    protected function initRelationsFaqSiteEntries(): void
+    {
+        $this->hasMany(
+            self::RELATION_SITE_ENTRIES,
+            ['class' => FaqModels::siteEntriesClass(), 'fk' => 'site_id']
         );
     }
 
