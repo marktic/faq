@@ -36,26 +36,29 @@ trait SiteEntriesControllerTrait
 
     public function order(): void
     {
-        $site = $this->getFaqSiteFromRequest();
-        $idSections = $this->getRequest()->get('order');
-        $idSections = explode(',', $idSections);
+        $idEntries = $this->getRequest()->get('order');
+        $idEntries = explode(',', $idEntries);
 
-        $categories = $site->getFaqSiteCategories();
-        $categories = $categories->keyBy('id');
+        /** @var SiteCategory $siteCategory */
+        $siteCategory = $this->checkForeignModelFromRequest(
+            FaqModels::siteCategories()->getController(), ['category_id', 'id']
+        );
+        $records = $siteCategory->getFaqSiteEntries();
+        $records = $records->keyBy('id');
 
-        if (count($categories) < 1) {
-            $this->Async()->sendMessage('No site categories', 'error');
+        if (count($records) < 1) {
+            $this->Async()->sendMessage('No records found', 'error');
         }
 
-        foreach ($idSections as $pos => $idSection) {
-            $record = $categories[$idSection] ?? null;
+        foreach ($idEntries as $pos => $idEntry) {
+            $record = $records[$idEntry] ?? null;
             if ($record) {
                 $record->position = $pos + 1;
                 $record->update();
             }
         }
 
-        $this->Async()->sendMessage('Categories reordered');
+        $this->Async()->sendMessage('Entries reordered');
     }
 
 

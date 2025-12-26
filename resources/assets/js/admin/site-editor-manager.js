@@ -1,4 +1,5 @@
 import FaqSiteCategoriesSortable from "./site-categories-sortable";
+import FaqSiteEntriesSortable from "./site-entries-sortable";
 
 export default class FaqSiteEditorManager {
     constructor(containerId = 'faq-site-builder') {
@@ -22,6 +23,7 @@ export default class FaqSiteEditorManager {
 
     initComponents() {
         this.siteCategoriesSortable = new FaqSiteCategoriesSortable(this);
+        this.siteEntriesSortable = new FaqSiteEntriesSortable(this);
     }
 
     async notify(data) {

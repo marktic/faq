@@ -8,7 +8,7 @@ use Marktic\Faq\Utility\FaqModels;
 $entriesRepository = FaqModels::entries();
 
 $card = Card::make()
-    ->withTitle(translator()->trans('details'))
+    ->withTitle($entriesRepository->getLabel('title'))
     ->withIcon(Icons::list_ul())
     ->addHeaderTool(
         ButtonAction::make()
