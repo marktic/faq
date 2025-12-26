@@ -1,5 +1,6 @@
 <?php
 
+use ByTIC\Icons\Icons;
 use Marktic\Faq\Entries\Models\Entry;
 use Marktic\Faq\Utility\FaqModels;
 
@@ -15,8 +16,10 @@ $faqEntries = $this->faqEntries;
     <?php foreach ($faqEntries as $entry) : ?>
         <li class="list-group-item">
             <div class="dropdown float-end">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <?= \ByTIC\Icons\Icons::plus() ?>
+                <button class="btn btn-secondary btn-xs dropdown-toggle"
+                        type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    <?= Icons::plus() ?>
                 </button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Action</a></li>

@@ -6,6 +6,7 @@ namespace Marktic\Faq\SiteCategories\Models;
 
 use Marktic\Faq\Base\Models\Traits\BaseRepositoryTrait;
 use Marktic\Faq\SiteCategories\Models\Filters\FilterManager;
+use Marktic\Faq\Sites\ModelsRelated\HasFaqSite\HasFaqSiteRepositoryTrait;
 use Marktic\Faq\Utility\FaqModels;
 use Marktic\Faq\Utility\PackageConfig;
 
@@ -17,11 +18,9 @@ trait SiteCategoriesRepositoryTrait
     public const TABLE = 'mkt_faq_site_categories';
     public const CONTROLLER = 'mkt_faq-site_categories';
 
-    use BaseRepositoryTrait;
-
-    protected function initRelationsFaq(): void
-    {
-        $this->belongsTo('FaqSite', ['class' => FaqModels::sitesClass(), 'fk' => 'site_id']);
+    use BaseRepositoryTrait, HasFaqSiteRepositoryTrait {
+        HasFaqSiteRepositoryTrait::initRelations insteadof BaseRepositoryTrait;
+        HasFaqSiteRepositoryTrait::initRelationsFaq insteadof BaseRepositoryTrait;
     }
 
     protected function injectParams(&$params = [])

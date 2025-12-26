@@ -7,6 +7,9 @@ use Marktic\Faq\Bundle\Modules\Admin\Forms\Sites\DetailsForm;
 use Marktic\Faq\Entries\Actions\Find\GetFaqEntriesByTenant;
 use Marktic\Faq\Sites\Models\Site;
 
+/**
+ * @method Site getModelFromRequest()
+ */
 trait SitesControllerTrait
 {
     use HasTenantControllerTrait;
@@ -26,7 +29,7 @@ trait SitesControllerTrait
         parent::view();
 
         $item = $this->getModelFromRequest();
-        $siteCategories = $item->getSiteCategories();
+        $siteCategories = $item->getFaqSiteCategories();
         $faqEntries = GetFaqEntriesByTenant::for($this->getFaqTenantFromRequest())->fetch();
 
         $this->payload()->with(
