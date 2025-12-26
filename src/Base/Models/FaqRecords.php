@@ -7,11 +7,11 @@ namespace Marktic\Faq\Base\Models;
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordsTrait;
 use Nip\I18n\Translatable\HasTranslations;
 use Nip\Records\Filters\Records\HasFiltersRecordsTrait;
+use Nip\Records\RecordManager;
 
 /**
- * Trait FaqRecordsTrait.
  */
-trait FaqRecordsTrait
+class FaqRecords extends RecordManager
 {
     use HasFiltersRecordsTrait;
     use HasFormsRecordsTrait;

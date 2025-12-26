@@ -4,13 +4,10 @@ declare(strict_types=1);
 
 namespace Marktic\Faq\Sites\Models;
 
-use Marktic\Faq\Base\Models\FaqRecordsTrait;
-use Nip\Records\RecordManager;
+use Marktic\Faq\Base\Models\FaqRecords;
 
-class Sites extends RecordManager
+class Sites extends FaqRecords
 {
-    use SiteRepositoryTrait, FaqRecordsTrait {
-        SiteRepositoryTrait::generateFilterManagerDefaultClass insteadof FaqRecordsTrait;
-    }
+    use SiteRepositoryTrait;
 
 }

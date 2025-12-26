@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Marktic\Faq\Entries\Models;
 
-use Nip\Records\Record;
+use Marktic\Faq\Base\Models\FaqRecord;
 
-class Entry extends Record
+class Entry extends FaqRecord
 {
     use EntryTrait;
 }

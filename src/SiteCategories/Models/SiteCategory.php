@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Marktic\Faq\SiteCategories\Models;
 
-use Nip\Records\Record;
+use Marktic\Faq\Base\Models\FaqRecord;
 
 /**
  * Class SiteCategory
  */
-class SiteCategory extends Record
+class SiteCategory extends FaqRecord
 {
     use SiteCategoryTrait;
 }

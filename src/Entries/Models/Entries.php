@@ -4,12 +4,9 @@ declare(strict_types=1);
 
 namespace Marktic\Faq\Entries\Models;
 
-use Marktic\Faq\Base\Models\FaqRecordsTrait;
-use Nip\Records\RecordManager;
+use Marktic\Faq\Base\Models\FaqRecords;
 
-class Entries extends RecordManager
+class Entries extends FaqRecords
 {
-    use EntryRepositoryTrait, FaqRecordsTrait {
-        EntryRepositoryTrait::generateFilterManagerDefaultClass insteadof FaqRecordsTrait;
-    }
+    use EntryRepositoryTrait;
 }

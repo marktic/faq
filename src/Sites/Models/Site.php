@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Marktic\Faq\Sites\Models;
 
-use Nip\Records\Record;
+use Marktic\Faq\Base\Models\FaqRecord;
 
-class Site extends Record
+class Site extends FaqRecord
 {
     use SiteTrait;
 }
