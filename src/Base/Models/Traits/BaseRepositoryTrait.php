@@ -17,10 +17,10 @@ trait BaseRepositoryTrait
     {
         parent::initRelations();
 
-        $this->initRelationsCms();
+        $this->initRelationsFaq();
     }
 
-    protected function initRelationsCms()
+    protected function initRelationsFaq()
     {
     }
 

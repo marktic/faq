@@ -19,9 +19,9 @@ trait EntryRepositoryTrait
         HasTenantRepository::initRelations insteadof BaseRepositoryTrait;
     }
 
-    protected function initRelationsCms(): void
+    protected function initRelationsFaq(): void
     {
-        $this->initRelationsCmsTenant();
+        $this->initRelationsFaqTenant();
     }
 
     protected function generateFilterManagerDefaultClass(): string

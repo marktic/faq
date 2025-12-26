@@ -2,15 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Marktic\Faq\Categories\Models;
+namespace Marktic\Faq\SiteCategories\Models;
 
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordTrait;
 use Marktic\Faq\Base\Models\Timestampable\TimestampableTrait;
-use Marktic\Faq\Utility\FaqModels;
 use Nip\Records\Record;
 
 /**
- * Trait CategoryTrait
+ * Trait SiteCategoryTrait
  * @property int $site_id
  * @property string $title
  * @property string $slug
@@ -18,7 +17,7 @@ use Nip\Records\Record;
  *
  * @method Record getSite()
  */
-trait CategoryTrait
+trait SiteCategoryTrait
 {
     use TimestampableTrait;
     use HasFormsRecordTrait;

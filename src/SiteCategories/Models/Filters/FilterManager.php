@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Marktic\Faq\Categories\Models\Filters;
+namespace Marktic\Faq\SiteCategories\Models\Filters;
 
 /**
  * Class FilterManager

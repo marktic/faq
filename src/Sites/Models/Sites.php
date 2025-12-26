@@ -12,4 +12,5 @@ class Sites extends RecordManager
     use SiteRepositoryTrait, FaqRecordsTrait {
         SiteRepositoryTrait::generateFilterManagerDefaultClass insteadof FaqRecordsTrait;
     }
+
 }

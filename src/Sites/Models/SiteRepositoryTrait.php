@@ -15,14 +15,24 @@ trait SiteRepositoryTrait
     public const TABLE = 'mkt_faq_sites';
     public const CONTROLLER = 'mkt_faq-sites';
 
+    public const RELATION_SITE_CATEGORIES = 'FaqSiteCategories';
+
     use BaseRepositoryTrait, HasTenantRepository {
         HasTenantRepository::initRelations insteadof BaseRepositoryTrait;
     }
 
-    protected function initRelationsCms(): void
+    protected function initRelationsFaq(): void
     {
-        $this->initRelationsCmsTenant();
-        $this->hasMany('Categories', ['class' => FaqModels::categoriesClass(), 'fk' => 'site_id']);
+        $this->initRelationsFaqTenant();
+        $this->initRelationsFaqSiteCategories();
+    }
+
+    protected function initRelationsFaqSiteCategories(): void
+    {
+        $this->hasMany(
+            self::RELATION_SITE_CATEGORIES,
+            ['class' => FaqModels::siteCategoriesClass(), 'fk' => 'site_id']
+        );
     }
 
     protected function generateFilterManagerDefaultClass(): string
