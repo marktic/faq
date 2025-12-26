@@ -1,14 +1,15 @@
 <?php
 /** @var \Marktic\Faq\SiteCategories\Models\SiteCategory $siteCategory */
 $siteCategory = $siteCategory ?? $this->siteCategory;
+
 ?>
 
 <section data-id="<?= $siteCategory->id ?>" class="bg-light border" >
-    <h3 class="site-category-title">
+    <h5 class="site-category-title pt-2 px-3 fw-bold text-primary">
         <?= \ByTIC\Icons\Icons::arrowsAlt(); ?>
         <?= $siteCategory->getTitle(); ?>
-    </h3>
+    </h5>
     <div class="inner p-3" >
-        ENTRIES
+        <?= $this->load('/mkt_faq-site_entries/modules/list/category'); ?>
     </div>
 </section>

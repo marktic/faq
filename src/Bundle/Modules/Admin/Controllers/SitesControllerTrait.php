@@ -5,6 +5,7 @@ namespace Marktic\Faq\Bundle\Modules\Admin\Controllers;
 use Marktic\Faq\Bundle\Modules\Admin\Controllers\Behaviours\HasTenantControllerTrait;
 use Marktic\Faq\Bundle\Modules\Admin\Forms\Sites\DetailsForm;
 use Marktic\Faq\Entries\Actions\Find\GetFaqEntriesByTenant;
+use Marktic\Faq\SiteCategories\Models\SiteCategories;
 use Marktic\Faq\Sites\Models\Site;
 
 /**
@@ -29,13 +30,17 @@ trait SitesControllerTrait
         parent::view();
 
         $item = $this->getModelFromRequest();
-        $siteCategories = $item->getFaqSiteCategories();
+
         $faqEntries = GetFaqEntriesByTenant::for($this->getFaqTenantFromRequest())->fetch();
+
+        $siteCategories = $item->getFaqSiteCategories();
+        $siteEntries = $siteCategories->loadRelation(SiteCategories::RELATION_SITE_ENTRIES);
 
         $this->payload()->with(
             [
-                'faqSiteCategories' => $siteCategories,
                 'faqEntries' => $faqEntries,
+                'faqSiteCategories' => $siteCategories,
+                'faqSiteEntries' => $siteEntries,
             ]
         );
     }

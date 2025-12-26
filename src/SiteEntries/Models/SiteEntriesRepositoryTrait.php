@@ -18,6 +18,9 @@ trait SiteEntriesRepositoryTrait
     public const TABLE = 'mkt_faq_site_entries';
     public const CONTROLLER = 'mkt_faq-site_entries';
 
+    public const RELATION_FAQ_ENTRY = 'FaqEntry';
+    public const RELATION_FAQ_CATEGORY = 'FaqCategory';
+
     use BaseRepositoryTrait, HasFaqSiteRepositoryTrait {
         HasFaqSiteRepositoryTrait::initRelations insteadof BaseRepositoryTrait;
         HasFaqSiteRepositoryTrait::initRelationsFaq insteadof BaseRepositoryTrait;
@@ -26,8 +29,8 @@ trait SiteEntriesRepositoryTrait
     protected function initRelationsFaq(): void
     {
         $this->initRelationsFaqSite();
-        $this->belongsTo('Category', ['class' => FaqModels::siteCategoriesClass(), 'fk' => 'category_id']);
-        $this->belongsTo('Entry', ['class' => FaqModels::entriesClass(), 'fk' => 'entry_id']);
+        $this->belongsTo(self::RELATION_FAQ_CATEGORY, ['class' => FaqModels::siteCategoriesClass(), 'fk' => 'category_id']);
+        $this->belongsTo(self::RELATION_FAQ_CATEGORY, ['class' => FaqModels::entriesClass(), 'fk' => 'entry_id']);
     }
 
     protected function injectParams(&$params = [])
