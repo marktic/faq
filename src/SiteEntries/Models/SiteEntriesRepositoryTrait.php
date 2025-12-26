@@ -30,7 +30,7 @@ trait SiteEntriesRepositoryTrait
     {
         $this->initRelationsFaqSite();
         $this->belongsTo(self::RELATION_FAQ_CATEGORY, ['class' => FaqModels::siteCategoriesClass(), 'fk' => 'category_id']);
-        $this->belongsTo(self::RELATION_FAQ_CATEGORY, ['class' => FaqModels::entriesClass(), 'fk' => 'entry_id']);
+        $this->belongsTo(self::RELATION_FAQ_ENTRY, ['class' => FaqModels::entriesClass(), 'fk' => 'entry_id']);
     }
 
     protected function injectParams(&$params = [])

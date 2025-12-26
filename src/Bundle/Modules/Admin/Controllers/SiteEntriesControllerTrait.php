@@ -17,14 +17,14 @@ trait SiteEntriesControllerTrait
 
         /** @var SiteCategory $siteCategory */
         $siteCategory = $this->checkForeignModelFromRequest(
-            FaqModels::siteCategories()->getController(), ['site_id', 'id']
+            FaqModels::siteCategories()->getController(), ['category_id', 'id']
         );
         $record->populateFromSite($siteCategory->getFaqSite());
         $record->populateFromSiteCategory($siteCategory);
 
         /** @var Entry $entry */
         $entry = $this->checkForeignModelFromRequest(
-            FaqModels::siteEntries()->getController(), ['entry_id', 'id']
+            FaqModels::entries()->getController(), ['entry_id', 'id']
         );
         $record->populateFromEntry($entry);
         $record->setPosition(999);

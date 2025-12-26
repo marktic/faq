@@ -7,6 +7,7 @@ namespace Marktic\Faq\SiteCategories\Models;
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordTrait;
 use Marktic\Faq\Base\Models\HasPosition\HasPositionRecordTrait;
 use Marktic\Faq\Base\Models\Timestampable\TimestampableTrait;
+use Marktic\Faq\SiteEntries\Models\SiteEntry;
 use Marktic\Faq\Sites\ModelsRelated\HasFaqSite\HasFaqSiteRecordTrait;
 use Nip\Records\Record;
 
@@ -16,6 +17,7 @@ use Nip\Records\Record;
  * @property string $title
  *
  * @method Record getSite()
+ * @method SiteEntry[] getFaqSiteEntries()
  */
 trait SiteCategoryTrait
 {
