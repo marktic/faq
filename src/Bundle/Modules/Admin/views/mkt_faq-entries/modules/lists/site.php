@@ -35,7 +35,7 @@ $faqEntries = $this->faqEntries;
                     <?php endforeach; ?>
                 </ul>
             </div>
-            <h5><?= $entry->getTitle(); ?></h5>
+            <h6 class="fw-bold"><?= $entry->getTitle(); ?></h6>
             <small>
                 <?= $entry->getLead(); ?>
             </small>

@@ -16,7 +16,7 @@ $siteCategory = $siteCategory ?? null;
     data-order-url="<?= FaqModels::siteEntries()->compileURL('order', ['category_id' => $siteCategory->id]) ?>">
     <?php foreach ($siteEntries as $siteEntry) : ?>
         <?php $entry = $siteEntry->getFaqEntry(); ?>
-        <li class="list-group-item" data-id="<?= $siteEntry->getId(); ?>">
+        <li class="list-group-item" data-id="<?= $siteEntry->id; ?>">
             <a href="" class="btn btn-xs btn-outline-primary float-end">
                 <?= Icons::remove(); ?>
             </a>

@@ -22,7 +22,7 @@ class TenantFilter extends AbstractFilter implements FilterInterface
         $tenant = $this->getTenantRecord();
 
         $query->where("tenant = ?", $tenant->getManager()->getMorphName());
-        $query->where('tenant_id = ?', $tenant->getId());
+        $query->where('tenant_id = ?', $tenant->id);
     }
 
     /**
