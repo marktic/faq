@@ -10,12 +10,12 @@ export default class FaqSiteEditorManager {
     }
 
     init() {
-        this.sectionListContainer = this.container.querySelector('.site-categories-list');
-        if (!this.sectionListContainer) {
+        this.siteCategoriestContainer = this.container.querySelector('.site-categories-list');
+        if (!this.siteCategoriestContainer) {
             return;
         }
 
-        this.storeOrderUrl = this.sectionListContainer.getAttribute('data-order-url');
+        this.storeOrderUrl = this.siteCategoriestContainer.getAttribute('data-order-url');
 
         this.initComponents();
     }

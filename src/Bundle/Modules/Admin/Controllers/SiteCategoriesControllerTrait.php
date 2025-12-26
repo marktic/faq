@@ -23,7 +23,8 @@ trait SiteCategoriesControllerTrait
     public function order(): void
     {
         $site = $this->getFaqSiteFromRequest();
-        $idSections = (array)$this->getRequest()->get('order');
+        $idSections = $this->getRequest()->get('order');
+        $idSections = explode(',', $idSections);
 
         $categories = $site->getFaqSiteCategories();
         $categories = $categories->keyBy('id');
@@ -40,7 +41,7 @@ trait SiteCategoriesControllerTrait
             }
         }
 
-        $this->Async()->sendMessage('Blocks reordered');
+        $this->Async()->sendMessage('Categories reordered');
     }
 
 

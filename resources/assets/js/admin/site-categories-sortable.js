@@ -10,7 +10,7 @@ export default class FaqSiteCategoriesSortable {
     }
 
     init() {
-        const siteCategoriesContainer = this.manager.sectionListContainer;
+        const siteCategoriesContainer = this.manager.siteCategoriestContainer;
         if (!siteCategoriesContainer) {
             return;
         }

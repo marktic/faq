@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="faq-site-builder">
+    <div id="faq-site-builder">
         <div class="row">
             <div class="col-12 col-lg-6 col-xl-3">
                 <?= $this->load('modules/panels/item-entries'); ?>

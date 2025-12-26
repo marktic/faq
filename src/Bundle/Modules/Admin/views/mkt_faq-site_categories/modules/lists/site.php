@@ -23,8 +23,8 @@ $siteCategories = $this->faqSiteCategories;
 <?php endif; ?>
 
 <div class="site-categories-list d-grid gap-3"
-    data-order-url="<?= FaqModels::siteCategories()->compileURL('order', ['site_id' => $site->id]) ?>">
+     data-order-url="<?= FaqModels::siteCategories()->compileURL('order', ['site_id' => $site->id]) ?>">
     <?php foreach ($siteCategories as $siteCategory) : ?>
-
+        <?= $this->load('/mkt_faq-site_categories/modules/item/list-item', ['siteCategory' => $siteCategory]); ?>
     <?php endforeach; ?>
 </div>

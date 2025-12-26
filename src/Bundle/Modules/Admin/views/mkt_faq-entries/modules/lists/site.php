@@ -2,11 +2,14 @@
 
 use ByTIC\Icons\Icons;
 use Marktic\Faq\Entries\Models\Entry;
+use Marktic\Faq\SiteCategories\Models\SiteCategory;
 use Marktic\Faq\Utility\FaqModels;
 
 $site = $this->site;
-$categoriesRepository = FaqModels::entries();
+$siteEntries = FaqModels::siteEntries();
 
+/** @var SiteCategory[] $siteCategories */
+$siteCategories = $this->faqSiteCategories;
 
 /** @var Entry[] $faqEntries */
 $faqEntries = $this->faqEntries;
@@ -16,15 +19,20 @@ $faqEntries = $this->faqEntries;
     <?php foreach ($faqEntries as $entry) : ?>
         <li class="list-group-item">
             <div class="dropdown float-end">
-                <button class="btn btn-secondary btn-xs dropdown-toggle"
+                <button class="btn btn-outline-info btn-xs dropdown-toggle"
                         type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                     <?= Icons::plus() ?>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <?php foreach ($siteCategories as $category) : ?>
+                        <li>
+                            <a class="dropdown-item"
+                               href="<?= $siteEntries->compileURL('add', ['category_id' => $category->id, 'entry_id' => $entry->id]); ?>">
+                                <?= $siteEntries->getLabel('add.category', ['category' => $category->getTitle()]); ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
             </div>
             <h5><?= $entry->getTitle(); ?></h5>

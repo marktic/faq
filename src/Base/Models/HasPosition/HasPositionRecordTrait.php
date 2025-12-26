@@ -13,7 +13,7 @@ trait HasPositionRecordTrait
         return (int) $this->position;
     }
 
-    public function setPosition(int $position): self
+    public function setPosition(int|null $position): self
     {
         $this->position = $position;
         return $this;
