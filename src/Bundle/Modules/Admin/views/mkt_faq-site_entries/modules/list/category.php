@@ -21,6 +21,7 @@ $siteCategory = $siteCategory ?? null;
                 <?= Icons::remove(); ?>
             </a>
             <h5 class="text-info">
+                <?= Icons::arrowsAlt(); ?>
                 <a href="<?= $entry->getURL(); ?>">
                     <?= $entry->getTitle(); ?>
                 </a>
