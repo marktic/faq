@@ -5,7 +5,7 @@ $faqSiteCategories = $this->faqSiteCategories;
 ?>
 
 <?php foreach ($faqSiteCategories as $faqSiteCategory): ?>
-    <?= $this->render(
+    <?= $this->load(
             '/mkt_faq-site_categories/view',
             ['faqSiteCategory' => $faqSiteCategory, 'faqSite' => $faqSite]
     ); ?>
