@@ -7,7 +7,7 @@ namespace Marktic\Faq\Sites\Actions\Find;
 use Bytic\Actions\Behaviours\Entities\FindRecords;
 use Bytic\Actions\Behaviours\HasSubject\HasSubject;
 use Marktic\Faq\Base\Actions\Find\HasTenantTrait;
-use Marktic\Faq\Entries\Actions\AbstractAction;
+use Marktic\Faq\Sites\Actions\AbstractAction;
 use Nip\Records\Record;
 
 class GetFaqSitesByTenant extends AbstractAction

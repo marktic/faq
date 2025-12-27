@@ -2,7 +2,6 @@
 
 namespace Marktic\Faq\Utility;
 
-use Marktic\Faq\Utility\PathsHelpers;
 use Nip\View\View;
 
 /**
