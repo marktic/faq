@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Marktic\Faq\Utility;
 
 use ByTIC\PackageBase\Utility\ModelFinder;
-use Marktic\Faq\FaqServiceProvider;
 use Marktic\Faq\Entries\Models\Entries;
+use Marktic\Faq\FaqServiceProvider;
 use Marktic\Faq\SiteCategories\Models\SiteCategories;
 use Marktic\Faq\SiteEntries\Models\SiteEntries;
 use Marktic\Faq\Sites\Models\Sites;

@@ -10,7 +10,6 @@ use Marktic\Faq\Entries\Models\Entry;
 use Marktic\Faq\SiteCategories\Models\SiteCategory;
 use Marktic\Faq\Sites\Models\Site;
 use Marktic\Faq\Sites\ModelsRelated\HasFaqSite\HasFaqSiteRecordTrait;
-use Nip\Records\Record;
 
 /**
  * Trait SiteEntryTrait

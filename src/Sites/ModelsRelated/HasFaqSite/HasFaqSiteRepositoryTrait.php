@@ -7,7 +7,7 @@ use Marktic\Faq\Utility\FaqModels;
 
 trait HasFaqSiteRepositoryTrait
 {
-    public const string RELATION_FAQ_SITE = 'FaqSite';
+    public const RELATION_FAQ_SITE = 'FaqSite';
 
     protected function initRelations(): void
     {
